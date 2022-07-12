@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<p>u1</p>
+<p>Hello {{- .u1.Name -}}</p>
+<p>性别： {{- .u1.Gender -}}</p>
+<p>年龄 ：{{- .u1.Age -}}</p>
+{{/* 遇事不决写注释 */}}
+<p>m1</p>
+<p>hello {{ .m1.name }}</p>
+<p>性别：{{ .m1.Gender }}</p>
+<p>年龄：{{ .m1.Age }}</p>
+<hr>
+{{/*变量*/}}
+{{ $v1:=100 }}
+{{ $age:=.m1.Age }}
+<p>{{ $age }}</p>
+
+<hr>
+{{/*条件判断*/}}
+{{ if $v1 }}
+{{ $v1 }}
+{{else}}
+无
+{{end}}
+<hr>
+{{/*比较函数*/}}
+{{ if lt .m1.Age 22 }}
+好好上学
+{{else}}
+好好工作
+{{end}}
+<hr>
+{{/*range*/}}
+{{ range $index,$value :=  .hobby }}
+    <p>{{$index}} - {{$value}}</p>
+{{else}}
+    无爱好
+{{end}}
+<hr>
+{{/*with*/}}
+<p>m1</p>
+{{ with .m1}}
+<p>hello {{ .name }}</p>
+<p>性别：{{ .Gender }}</p>
+<p>年龄：{{ .Age }}</p>
+{{end}}
+<hr>
+{{/*index*/}}
+{{index .hobby 2}}
+</body>
+</html>
